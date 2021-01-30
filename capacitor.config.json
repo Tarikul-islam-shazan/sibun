@@ -1,0 +1,13 @@
+{
+  "appId": "com.sibun.user",
+  "appName": "sibun",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 3000
+    }
+  },
+  "cordova": {}
+}

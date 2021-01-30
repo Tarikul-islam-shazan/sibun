@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">sibun</string>
+    <string name="title_activity_main">sibun</string>
+    <string name="package_name">com.sibun.user</string>
+    <string name="custom_url_scheme">com.sibun.user</string>
+</resources>

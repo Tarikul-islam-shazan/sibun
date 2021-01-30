@@ -1,0 +1,7 @@
+{
+  "name": "sibun",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
