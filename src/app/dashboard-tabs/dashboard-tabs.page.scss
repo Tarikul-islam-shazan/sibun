@@ -1,0 +1,18 @@
+ion-tab-button {
+  --color-selected: #00bc67;
+}
+ion-tab-bar {
+  border-radius: 15px 15px 0 0;
+  box-shadow: 20px 0px 20px #e3e3e3;
+}
+ion-fab {
+  padding-bottom: 16px;
+}
+ion-fab-button {
+  --background: #757577;
+  --background-focused: #00bc67;
+  --background-activated: #00bc67;
+  --background-hover: #00bc67;
+  width: 45px !important;
+  height: 45px !important;
+}

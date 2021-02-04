@@ -1,0 +1,26 @@
+<ion-tabs #requestAndPay>
+  <ion-tab-bar slot="bottom" >
+    <ion-tab-button tab="home">
+      <ion-icon name="home"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="cash-card">
+      <ion-icon name="wallet"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button  tab="request-and-pay"></ion-tab-button>
+
+    <ion-tab-button tab="transaction">
+      <ion-icon name="swap-horizontal"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile">
+      <ion-icon name="person"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+<ion-fab vertical="bottom" horizontal="center" (click)="activeRequestAndPayTab()">
+  <ion-fab-button >
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

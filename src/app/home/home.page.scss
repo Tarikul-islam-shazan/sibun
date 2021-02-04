@@ -1,27 +1,35 @@
-#container {
-  text-align: center;
+.home-page-header {
+  .home-page-toolbar {
+    --background: #00c06b;
+    height: 100px;
+  }
+  .home-page-title {
+    padding-top: 60px;
+    color: white;
+    font-weight: bold;
+  }
+  .home-page-profile-avatar {
+    padding-top: 32px;
+    padding-right: 16px;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+    .home-page-profile-img {
+      width: 30px;
+      height: 30px;
+    }
+  }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+.home-page-content {
+  .amount {
+    height: 250px;
+    flex-direction: column;
+    .balance {
+      font-size: 48px;
+      font-weight: bold;
+    }
+    .balance-title {
+      color: #767677;
+      font-size: 24px;
+    }
+  }
 }

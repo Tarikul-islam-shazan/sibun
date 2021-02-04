@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import{ Plugins } from '@capacitor/core';
 
-const {StatusBar,SplashScreen} = Plugins;
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -17,13 +15,15 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      StatusBar.setBackgroundColor({color:'green'});
+      const {StatusBar,SplashScreen} = Plugins;
+      SplashScreen.hide();
+      StatusBar.setBackgroundColor({color:'#00c06b'});
       // Display content under transparent status bar (Android only)
       StatusBar.setOverlaysWebView({
         overlay: true
       });
       StatusBar.show();
-      SplashScreen.hide();
+     
     });
   }
 }

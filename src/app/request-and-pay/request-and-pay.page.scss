@@ -1,0 +1,20 @@
+.home-page-header {
+  .home-page-toolbar {
+    --background: #00c06b;
+    height: 100px;
+  }
+  .home-page-title {
+    padding-top: 60px;
+    color: white;
+    font-weight: bold;
+  }
+  .home-page-profile-avatar {
+    padding-top: 32px;
+    padding-right: 16px;
+
+    .home-page-profile-img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
