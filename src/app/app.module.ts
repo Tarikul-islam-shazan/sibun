@@ -9,7 +9,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import {  ReactiveFormsModule } from '@angular/forms';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,9 +21,16 @@ import {  ReactiveFormsModule } from '@angular/forms';
   imports: [
     HttpClientModule,
     BrowserModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter
+      }
+    }),
     IonicModule.forRoot(), 
-    AppRoutingModule],
+    AppRoutingModule
+  ],
   providers: [
+    JwtHelperService,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

@@ -54,6 +54,15 @@ export class RegistrationPage implements OnInit {
     toast.present();
   }
 
+  async successAlert(msg){
+    const toast = await this.toastCtrl.create({
+      header: 'Sucesss',
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
+  }
+
   register(){
     const postData = {
       firstName: this.registrationForm.value.firstName,
@@ -63,6 +72,7 @@ export class RegistrationPage implements OnInit {
     }
     this.authenticationService.signIn(postData).subscribe((res: User)=>{
       console.log(res);
+      this.successAlert('Registration Sucessful');
       this.router.navigateByUrl('/login');
     },(err)=> {
       console.log(err)
