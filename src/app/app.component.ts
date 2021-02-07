@@ -15,15 +15,16 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      const {StatusBar,SplashScreen} = Plugins;
-      SplashScreen.hide();
-      StatusBar.setBackgroundColor({color:'#00c06b'});
-      // Display content under transparent status bar (Android only)
-      StatusBar.setOverlaysWebView({
-        overlay: true
-      });
-      StatusBar.show();
-     
+      if(this.platform.is('capacitor')){
+        const {StatusBar,SplashScreen} = Plugins;
+        SplashScreen.hide();
+        StatusBar.setBackgroundColor({color:'#00c06b'});
+        // Display content under transparent status bar (Android only)
+        StatusBar.setOverlaysWebView({
+          overlay: true
+        });
+        StatusBar.show();
+      }
     });
   }
 }

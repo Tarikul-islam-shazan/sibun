@@ -7,6 +7,121 @@
       <ion-label>SIBUN</ion-label>
     </div>
   </div>
- 
-
+  <form [formGroup]="registrationForm">
+    <div class="registration-form-group">
+      <div class="input-field">
+        <div class="field-title">First Name</div>
+        <div class="right-content-input">
+        <ion-input 
+          formControlName="firstName"
+          placeholder="Enter your first name" 
+          type="text" 
+          class="white-input">
+        </ion-input>
+        </div>
+      </div>
+      <div *ngIf="registrationForm.controls['firstName'].invalid && 
+      (registrationForm.controls['firstName'].dirty || registrationForm.controls['firstName'].touched)">
+        <div *ngIf="registrationForm.controls['firstName'].errors.required" class="error-tag">
+          First Name is required.
+        </div>
+        <div *ngIf="registrationForm.controls['firstName'].errors.pattern" class="error-tag">
+          Only alphabets are allowed.
+        </div>
+      </div>
+      <div class="input-field">
+        <div class="field-title">Last Name</div>
+        <div class="right-content-input">
+        <ion-input 
+          formControlName="lastName"
+          placeholder="Enter your first name" 
+          type="text" 
+          class="white-input">
+        </ion-input>
+        </div>
+      </div>
+      <div *ngIf="registrationForm.controls['lastName'].invalid && 
+      (registrationForm.controls['lastName'].dirty || registrationForm.controls['lastName'].touched)">
+        <div *ngIf="registrationForm.controls['lastName'].errors.required" class="error-tag">
+          Last Name is required.
+        </div>
+        <div *ngIf="registrationForm.controls['lastName'].errors.pattern" class="error-tag">
+          Only alphabets are allowed.
+        </div>
+      </div>
+      <div class="input-field">
+        <div class="field-title">Email</div>
+        <div class="right-content-input">
+        <ion-input 
+          formControlName="email"
+          placeholder="Enter your first name" 
+          type="email" 
+          class="white-input">
+        </ion-input>
+        </div>
+      </div>
+      <div *ngIf="registrationForm.controls['email'].invalid && 
+      (registrationForm.controls['email'].dirty || registrationForm.controls['email'].touched)">
+        <div *ngIf="registrationForm.controls['email'].errors.required" class="error-tag">
+          Email is required.
+        </div>
+      </div>
+      <div class="input-field">
+        <div class="field-title">Password</div>
+        <div class="right-content-input">
+        <ion-input 
+          formControlName="password"
+          placeholder="Enter your first name" 
+          type="password" 
+          class="white-input">
+        </ion-input>
+     
+        </div>
+      </div>
+      <div *ngIf="registrationForm.controls['password'].invalid && 
+      (registrationForm.controls['password'].dirty || registrationForm.controls['password'].touched)">
+        <div *ngIf="registrationForm.controls['password'].errors.required" class="error-tag">
+          Password is required.
+        </div>
+        <div *ngIf="registrationForm.controls['password'].errors.pattern" class="error-tag">
+          At least one upper case English letter.At least one lower case English letter.At least one digit.
+          At least one special character.Minimum eight in length.
+        </div>
+      </div>
+      <div class="input-field">
+        <div class="field-title">Confirm Password</div>
+        <div class="right-content-input">
+        <ion-input 
+          formControlName="confirmPassword"
+          placeholder="Enter your first name" 
+          type="password" 
+          class="white-input">
+        </ion-input>
+        </div>
+      </div>
+      <div *ngIf="!isPasswordMatched() &&
+      (registrationForm.controls['confirmPassword'].dirty || 
+      registrationForm.controls['confirmPassword'].touched)">
+        <div *ngIf="registrationForm.controls['confirmPassword'].errors.required" class="error-tag">
+          Confirm Password is required.
+        </div>
+        <div *ngIf="!isPasswordMatched()" class="error-tag">
+          Password not matched.
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="ion-padding">
+   <ion-button 
+    [disabled]="registrationForm.invalid"
+    class="white-btn" 
+    expand="block" 
+    mode="ios" 
+    (click)="register()">
+   Sign Up
+  </ion-button>
+  </div>
+  <div class="ion-padding">
+    <ion-text>Already have an account?<a routerLink="/login"> Sign In</a></ion-text>
+  </div>
 </ion-content>
