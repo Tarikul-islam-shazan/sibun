@@ -49,7 +49,7 @@ export class RegistrationPage implements OnInit {
     const toast = await this.toastCtrl.create({
       header: 'Error Occured',
       message: error,
-      position: 'top'
+      duration: 2000
     });
     toast.present();
   }
@@ -63,9 +63,7 @@ export class RegistrationPage implements OnInit {
     }
     this.authenticationService.signIn(postData).subscribe((res: User)=>{
       console.log(res);
-      if(res){
-        this.router.navigate['/login'];
-      }
+      this.router.navigateByUrl('/login');
     },(err)=> {
       console.log(err)
       if(err.status == 400){
