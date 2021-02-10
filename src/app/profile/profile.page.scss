@@ -1,20 +1,17 @@
-.home-page-header {
-  .home-page-toolbar {
+.profile-page-header {
+  .profile-page-toolbar {
     --background: #00c06b;
-    height: 100px;
-  }
-  .home-page-title {
-    padding-top: 60px;
+    height: 60px;
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
     color: white;
-    font-weight: bold;
+    font-size: 20px;
   }
-  .home-page-profile-avatar {
-    padding-top: 32px;
-    padding-right: 16px;
-
-    .home-page-profile-img {
-      width: 30px;
-      height: 30px;
+  .profile-page-content {
+    .profile-info {
+      background-color: #00c06b;
+      height: 150px;
     }
   }
 }

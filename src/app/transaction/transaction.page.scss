@@ -1,20 +1,56 @@
-.home-page-header {
-  .home-page-toolbar {
+.transaction-page-header {
+  .transaction-page-toolbar {
     --background: #00c06b;
     height: 100px;
+    padding-top: 40px;
   }
-  .home-page-title {
-    padding-top: 60px;
+  .transaction-page-title {
     color: white;
     font-weight: bold;
+    font-size: 22px;
   }
-  .home-page-profile-avatar {
-    padding-top: 32px;
-    padding-right: 16px;
+}
 
-    .home-page-profile-img {
-      width: 30px;
-      height: 30px;
+.transaction-content {
+  .card-content {
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+    .schedule-label {
+      padding-left: 10px;
+      font-size: 18px;
+      color: #a0a0a0;
+      font-weight: bold;
+    }
+    .statement {
+      --padding-start: 0px;
+      --inner-padding-end: 0px;
+      .statement-detail {
+        display: flex;
+        flex-direction: column;
+        .statement-type {
+          font-size: 18px;
+        }
+        .date-label {
+          font-size: 10px;
+          color: #969698;
+        }
+      }
+      .amount-and-status {
+        display: flex;
+        flex-direction: column;
+        .amount {
+          font-size: 18px;
+          float: right;
+        }
+        .status {
+          font-size: 10px;
+          font-weight: bold;
+          color: #ea983d;
+          float: right;
+        }
+      }
     }
   }
 }
