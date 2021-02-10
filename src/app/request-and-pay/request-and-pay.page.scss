@@ -19,4 +19,15 @@
 }
 .request-and-pay-page-content {
   --background: #00c06b;
+  .amount-content {
+    height: 300px;
+    .amount {
+      font-size: 32px;
+      color: white;
+      font-weight: bold;
+    }
+  }
+  .amount-keyboard {
+    color: white;
+  }
 }

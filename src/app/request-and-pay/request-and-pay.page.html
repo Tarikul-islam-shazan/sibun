@@ -8,5 +8,56 @@
 </ion-header>
 
 <ion-content class="ion-padding request-and-pay-page-content">
+  <div class="content-center amount-content">
+    <div class="amount">
+      {{ amount }}
+    </div>
+  </div>
+  <ion-grid class="amount-keyboard">
+    <ion-row class="ion-padding">
+      <ion-col size="4" class="content-center" (click)="updateAmount('1')">
+        <div>1</div>
+      </ion-col>
+      <ion-col size="4" class="content-center" (click)="updateAmount('2')">
+        <div>2</div>
+      </ion-col>
+      <ion-col size="4" class="content-center" (click)="updateAmount('3')">
+        <div>3</div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-padding">
+      <ion-col size="4" class="content-center" (click)="updateAmount('4')">
+        <div>4</div>
+      </ion-col>
+      <ion-col size="4" class="content-center" (click)="updateAmount('5')">
+        <div>5</div>
+      </ion-col>
+      <ion-col size="4" class="content-center" (click)="updateAmount('6')">
+        <div>6</div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-padding">
+      <ion-col size="4" class="content-center" (click)="updateAmount('7')">
+        <div>7</div>
+      </ion-col>
+      <ion-col size="4" class="content-center" (click)="updateAmount('8')">
+        <div>8</div>
+      </ion-col>
+      <ion-col size="4" class="content-center" (click)="updateAmount(9)">
+        <div>9</div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-padding">
+      <ion-col size="4" class="content-center" (click)="updateAmount('.')">
+        <div>.</div>
+      </ion-col>
+      <ion-col size="4" class="content-center" (click)="updateAmount('0')">
+        <div>0</div>
+      </ion-col>
+      <ion-col size="4" class="content-center" (click)="updateAmount('x')">
+        <div>x</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
