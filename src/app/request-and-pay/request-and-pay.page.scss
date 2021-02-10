@@ -1,20 +1,22 @@
-.home-page-header {
-  .home-page-toolbar {
+.request-and-pay-page-header {
+  .request-and-pay-page-toolbar {
     --background: #00c06b;
-    height: 100px;
-  }
-  .home-page-title {
-    padding-top: 60px;
     color: white;
-    font-weight: bold;
-  }
-  .home-page-profile-avatar {
-    padding-top: 32px;
     padding-right: 16px;
-
-    .home-page-profile-img {
-      width: 30px;
-      height: 30px;
+    padding-left: 16px;
+    padding-top: 16px;
+    .request-and-pay-scan-icon {
+      font-size: 30px;
+    }
+    .request-and-pay-page-profile-avatar {
+      padding-top: 10px;
+      .request-and-pay-page-profile-img {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
+}
+.request-and-pay-page-content {
+  --background: #00c06b;
 }
