@@ -8,10 +8,54 @@
     color: white;
     font-size: 20px;
   }
-  .profile-page-content {
-    .profile-info {
-      background-color: #00c06b;
-      height: 150px;
+}
+
+.profile-page-content {
+  .profile-info {
+    flex-direction: column;
+    background-color: #00c06b;
+    height: 180px;
+    .profile-img-avatar {
+      margin-bottom: 20px;
+      .profile-img {
+        height: 60px;
+        width: 60px;
+      }
+    }
+    .profile-name {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      padding-bottom: 10px;
+    }
+    .profile-username {
+      color: white;
+    }
+  }
+  .user-info-card {
+    .user-info-card-content {
+      padding-top: 25px;
+      padding-right: 20px;
+      padding-left: 20px;
+      padding-bottom: 20px;
+      .user-info {
+        --padding-start: 0px;
+        --inner-padding-end: 0px;
+        font-size: 13px;
+        .info-label {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .signout-referral-card {
+    .signout-referral-card-content {
+      padding-left: 16px;
+      padding-right: 16px;
+      .title {
+        font-size: 14px;
+        color: #00c06b;
+      }
     }
   }
 }

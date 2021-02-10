@@ -6,11 +6,56 @@
 </ion-header>
 
 <ion-content class="profile-page-content">
-  <div class="profile-info">
-    <!-- <div> -->
-      <!-- <ion-avatar>
-        <ion-img src="/assets/home/profiel-dummy.png"></ion-img>
-      </ion-avatar> -->
-    <!-- </div> -->
+  <div class="profile-info content-center">
+    <div>
+      <ion-avatar class="profile-img-avatar">
+        <ion-img class="profile-img" src="/assets/home/profiel-dummy.png"></ion-img>
+      </ion-avatar> 
+    </div>
+    <div class="profile-name">
+      <ion-label >Masum Kamal</ion-label>
+    </div>
+    <div class="profile-username">
+      <ion-label>$massum1</ion-label>
+    </div>
   </div>
+  <ion-card mode="ios" class="user-info-card">
+    <ion-card-content class="ion-no-padding user-info-card-content">
+      <ion-item lines="none" class="user-info">
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-label class="info-label">Personal</ion-label>
+        <ion-icon slot="end" name="chevron-forward"></ion-icon>
+      </ion-item>
+      <ion-item lines="none" class="user-info">
+        <ion-icon slot="start" name="lock-closed"></ion-icon>
+        <ion-label class="info-label">Privacy & Security</ion-label>
+        <ion-icon slot="end" name="chevron-forward"></ion-icon>
+      </ion-item>
+      <ion-item lines="none" class="user-info">
+        <ion-icon slot="start" name="notifications"></ion-icon>
+        <ion-label class="info-label">Notification</ion-label>
+        <ion-icon slot="end" name="chevron-forward"></ion-icon>
+      </ion-item>
+      <ion-item lines="none" class="user-info">
+        <ion-icon slot="start" name="document-text"></ion-icon>
+        <ion-label class="info-label">Documents</ion-label>
+        <ion-icon slot="end" name="chevron-forward"></ion-icon>
+      </ion-item>
+      <ion-item lines="none" class="user-info">
+        <ion-icon slot="start" name="information-circle"></ion-icon>
+        <ion-label class="info-label">Support</ion-label>
+        <ion-icon slot="end" name="chevron-forward"></ion-icon>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card mode="ios" class="signout-referral-card">
+    <ion-card-content class="ion-no-padding signout-referral-card-content">
+      <ion-item lines="full">
+        <ion-title class="title">Referral Code</ion-title>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-title class="title">Sign Out</ion-title>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
