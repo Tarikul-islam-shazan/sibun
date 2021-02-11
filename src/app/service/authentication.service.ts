@@ -14,6 +14,8 @@ export class AuthenticationService {
       'Content-Type': 'application/json'
     }),
   };  
+ 
+
 
   userLoggedIn: boolean = false;
 
@@ -28,7 +30,7 @@ export class AuthenticationService {
   }
 
   logOut(data){
-    return this.http.post(`${environment.serviceUrl}auth/logout`,data,this.httpOptions);
+    return this.http.post(`${environment.serviceUrl}auth/logout`,data);
   }
 
   isAuthenticated(): boolean{

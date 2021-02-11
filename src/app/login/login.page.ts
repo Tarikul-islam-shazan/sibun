@@ -56,11 +56,16 @@ export class LoginPage implements OnInit {
     }
     this.authenticationService.logIn(postData).subscribe((res)=>{
       // console.log(res);
-      localStorage.setItem('token',res.tokenData.token);
-      localStorage.setItem('person-name',res['user'].firstName+' '+res['user'].lastName);
-      localStorage.setItem('user-name','$'+res['user'].firstName);
-      this.successAlert('Log in Sucessful');
-      this.router.navigateByUrl('/dashboard');
+      try {
+        localStorage.setItem('token',res.tokenData.token);
+        localStorage.setItem('person-name',res.firstName+' '+res.lastName);
+        localStorage.setItem('user-name','$'+res.firstName);
+        this.successAlert('Log in Sucessful');
+        this.router.navigateByUrl('/dashboard');
+      } catch (e) {
+        this.errorAlert('Some thing went wrong');
+      }
+      
     },(err)=> {
       // console.log(err)
       if(err.status == 400){
