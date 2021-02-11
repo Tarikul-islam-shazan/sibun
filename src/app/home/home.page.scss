@@ -2,19 +2,18 @@
   .home-page-toolbar {
     --background: #00c06b;
     height: 100px;
-  }
-  .home-page-title {
-    padding-top: 60px;
-    color: white;
-    font-weight: bold;
-  }
-  .home-page-profile-avatar {
-    padding-top: 32px;
-    padding-right: 16px;
+    padding-top: 40px;
+    .home-page-title {
+      color: white;
+      font-weight: bold;
+    }
+    .home-page-profile-avatar {
+      padding-right: 16px;
 
-    .home-page-profile-img {
-      width: 30px;
-      height: 30px;
+      .home-page-profile-img {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 }

@@ -55,12 +55,14 @@ export class LoginPage implements OnInit {
       password: this.loginForm.value.password
     }
     this.authenticationService.logIn(postData).subscribe((res)=>{
-      console.log(res);
+      // console.log(res);
       localStorage.setItem('token',res.tokenData.token);
+      localStorage.setItem('person-name',res['user'].firstName+' '+res['user'].lastName);
+      localStorage.setItem('user-name','$'+res['user'].firstName);
       this.successAlert('Log in Sucessful');
       this.router.navigateByUrl('/dashboard');
     },(err)=> {
-      console.log(err)
+      // console.log(err)
       if(err.status == 400){
         this.errorAlert('Email already exist');
       } else {

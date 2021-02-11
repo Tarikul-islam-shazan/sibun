@@ -1,20 +1,60 @@
-.home-page-header {
-  .home-page-toolbar {
+.cash-card-page-header {
+  .cash-card-page-toolbar {
     --background: #00c06b;
     height: 100px;
-  }
-  .home-page-title {
-    padding-top: 60px;
-    color: white;
-    font-weight: bold;
-  }
-  .home-page-profile-avatar {
-    padding-top: 32px;
-    padding-right: 16px;
-
-    .home-page-profile-img {
-      width: 30px;
-      height: 30px;
+    padding-top: 40px;
+    .cash-card-page-title {
+      color: white;
+      font-weight: bold;
+      font-size: 22px;
     }
+  }
+}
+.sibun-card {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  height: 200px;
+  width: 100%;
+  background-color: black;
+  border-radius: 10px;
+  padding: 16px;
+  .card-header {
+    --background: black;
+    color: white;
+    --padding-start: 0px;
+    --inner-padding-end: 0px;
+    .card-name {
+      color: white;
+      font-size: 16px;
+    }
+    .card-bank-name {
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+  .card-chip {
+    --background: black;
+    color: white;
+    --padding-start: 0px;
+    --inner-padding-end: 0px;
+  }
+  .card-number {
+    --background: black;
+    color: white;
+    --padding-start: 0px;
+    --inner-padding-end: 0px;
+    .number {
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+  .card-user {
+    --background: black;
+    color: white;
+    --padding-start: 0px;
+    --inner-padding-end: 0px;
+    font-size: 12px;
+    font-weight: bold;
   }
 }

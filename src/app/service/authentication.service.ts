@@ -27,6 +27,10 @@ export class AuthenticationService {
     return this.http.post<User>(`${environment.serviceUrl}auth/login`,data,this.httpOptions);
   }
 
+  logOut(data){
+    return this.http.post(`${environment.serviceUrl}auth/logout`,data,this.httpOptions);
+  }
+
   isAuthenticated(): boolean{
     const token = localStorage.getItem('token');
     return !this.jwtHelper.isTokenExpired(token);

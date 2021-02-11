@@ -10,7 +10,7 @@
 <ion-content class="ion-padding request-and-pay-page-content">
   <div class="content-center amount-content">
     <div class="amount">
-      {{ amount }}
+      $ {{ amount }} 
     </div>
   </div>
   <ion-grid class="amount-keyboard">
@@ -59,5 +59,14 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" mode="ios" class="green-btn">Request</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" mode="ios" class="green-btn">Pay</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

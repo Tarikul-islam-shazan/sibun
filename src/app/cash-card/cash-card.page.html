@@ -1,14 +1,28 @@
-<ion-header class="ion-no-border home-page-header" >
-  <ion-toolbar class="home-page-toolbar">
-    <ion-title class="home-page-title" mode="md">
-      Banking
+<ion-header class="ion-no-border cash-card-page-header" >
+  <ion-toolbar class="cash-card-page-toolbar">
+    <ion-title class="cash-card-page-title" mode="ios">
+      Cash Card
     </ion-title>
-    <ion-avatar slot="end" class="home-page-profile-avatar">
-      <img class="home-page-profile-img" src="assets/home/profiel-dummy.png"/>
-    </ion-avatar>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="ion-padding">
+  <div class="sibun-card">
+    <ion-item lines="none" class="card-header">
+      <ion-img slot="start" src="assets/cash-card/card-logo.jpg"></ion-img>
+      <ion-text class="card-name">Credit card</ion-text>
+      <ion-text slot="end" class="card-bank-name">Local Bank <br> Limited</ion-text>
+    </ion-item>
+    <ion-item lines="none" class="card-chip">
+      <ion-img slot="start" src="assets/cash-card/card-chip.png"></ion-img>
+    </ion-item>
+    <ion-item lines="none" class="card-number">
+      <ion-text class="number">2465 2426 5424 7889</ion-text>
+    </ion-item>
+    <ion-item lines="none" class="card-user">
+      <ion-label slot="start">Name<br> Masum Kamal</ion-label>
+      <ion-label slot="end">Expires<br>10/24</ion-label>
+    </ion-item>
+  </div>
+  <ion-button class="green-btn" expand="block" mode="ios">Get Free Sibun Card</ion-button>
 </ion-content>
