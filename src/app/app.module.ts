@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
 export function tokenGetter() {
-  return localStorage.getItem("token");
+  return localStorage.getItem('token');
 }
 
 @NgModule({

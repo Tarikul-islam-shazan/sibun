@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-
-import { Platform } from '@ionic/angular';
-import{ Plugins } from '@capacitor/core';
+import { ModalController, Platform } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
+import { SplashPage } from './splash/splash/splash.page';
 
 @Component({
   selector: 'app-root',
@@ -9,22 +9,28 @@ import{ Plugins } from '@capacitor/core';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  constructor(private platform: Platform) {
+  constructor(private platform: Platform,private modalCtrl: ModalController) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       if(this.platform.is('capacitor')){
-        const {StatusBar,SplashScreen} = Plugins;
-        SplashScreen.hide();
+        const { StatusBar } = Plugins;
+        this.openSplashModal()
         StatusBar.setBackgroundColor({color:'#00c06b'});
-        // Display content under transparent status bar (Android only)
         StatusBar.setOverlaysWebView({
           overlay: true
         });
         StatusBar.show();
       }
     });
+  }
+
+  async openSplashModal(){
+    const splashModal = await this.modalCtrl.create({
+      component: SplashPage
+    });
+    await splashModal.present();
   }
 }
