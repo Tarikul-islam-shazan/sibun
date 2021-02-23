@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { IonicStorageModule } from '@ionic/storage';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -26,7 +27,8 @@ export function tokenGetter() {
         tokenGetter: tokenGetter
       }
     }),
-    IonicModule.forRoot(), 
+    IonicModule.forRoot(),
+    IonicStorageModule.forRoot(), 
     AppRoutingModule
   ],
   providers: [
