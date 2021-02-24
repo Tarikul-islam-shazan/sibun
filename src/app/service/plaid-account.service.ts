@@ -23,6 +23,6 @@ export class PlaidAccountService {
     return this.http.post(`${environment.serviceUrl}api/set_access_token`,data,this.httpOptions);
   }
   plaidGetAccount(data){
-    return this.http.get(`${environment.serviceUrl}api/accounts`+`?${data}`);
+    return this.http.get(`${environment.serviceUrl}api/accounts`,data);
   }
 }
