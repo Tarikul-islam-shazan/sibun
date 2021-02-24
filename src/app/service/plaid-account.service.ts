@@ -17,12 +17,12 @@ export class PlaidAccountService {
   constructor(private http: HttpClient) { }
 
   plaidCreateLinkToken(): Observable<PlaidLinkToken> {
-    return this.http.post<PlaidLinkToken>(`${environment.localServiceUrl}api/create_link_token`,'',this.httpOptions);
+    return this.http.post<PlaidLinkToken>(`${environment.serviceUrl}api/create_link_token`,'',this.httpOptions);
   }
   plaidSetAccessToken(data){
-    return this.http.post(`${environment.localServiceUrl}api/set_access_token`,data,this.httpOptions);
+    return this.http.post(`${environment.serviceUrl}api/set_access_token`,data,this.httpOptions);
   }
   plaidGetAccount(data){
-    return this.http.get(`${environment.localServiceUrl}api/accounts`+`?${data}`);
+    return this.http.get(`${environment.serviceUrl}api/accounts`+`?${data}`);
   }
 }
