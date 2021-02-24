@@ -28,7 +28,10 @@ export function tokenGetter() {
       }
     }),
     IonicModule.forRoot(),
-    IonicStorageModule.forRoot(), 
+    IonicStorageModule.forRoot({
+      name: '__sibunAppdb',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }), 
     AppRoutingModule
   ],
   providers: [

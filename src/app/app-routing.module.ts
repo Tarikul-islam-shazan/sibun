@@ -28,6 +28,11 @@ const routes: Routes = [
   {
     path: 'splash',
     loadChildren: () => import('./splash/splash/splash.module').then( m => m.SplashPageModule)
+  },
+  {
+    path: 'plaid-bank',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./plaid-bank/plaid-bank.module').then( m => m.PlaidBankPageModule)
   }
 ];
 

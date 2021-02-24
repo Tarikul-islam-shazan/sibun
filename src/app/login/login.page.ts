@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { User } from '../model/user.interface';
 import { AuthenticationService } from '../service/authentication.service';
+import { PlaidAccountService } from '../service/plaid-account.service';
+import { Storage } from '@ionic/storage';
+import { PlaidLinkToken } from '../model/plaidLinkToken.interface';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +20,8 @@ export class LoginPage implements OnInit {
     private router:Router,
     private formBuilder:FormBuilder, 
     private authenticationService: AuthenticationService, 
+    private plaidService: PlaidAccountService,
+    private storage: Storage,
     private toastCtrl:ToastController) { }
 
   ngOnInit() {
@@ -60,8 +64,7 @@ export class LoginPage implements OnInit {
         localStorage.setItem('token',res.tokenData.token);
         localStorage.setItem('person-name',res.firstName+' '+res.lastName);
         localStorage.setItem('user-name','$'+res.firstName);
-        this.successAlert('Log in Sucessful');
-        this.router.navigateByUrl('/dashboard');
+        this.callPlaidLinkToken();
       } catch (e) {
         this.errorAlert('Some thing went wrong');
       }
@@ -73,6 +76,21 @@ export class LoginPage implements OnInit {
       } else {
         this.errorAlert(`Error occured ${err.status}`);
       }
+    })
+  }
+
+  callPlaidLinkToken() {
+    this.plaidService.plaidCreateLinkToken().subscribe( (res:PlaidLinkToken) => {
+      try {
+        // console.log('Link-Token:',res.link_token)
+        localStorage.setItem('link_token', res.link_token);
+        this.successAlert('Log in Sucessful');
+        this.router.navigateByUrl('/plaid-bank');
+      } catch (e) {
+        this.errorAlert('Login Page: Storage not set');
+      }
+    }, err => {
+      this.errorAlert(`Error occured ${err.status}`);
     })
   }
 
