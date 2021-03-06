@@ -82,10 +82,9 @@ export class PlaidBankPage implements OnInit {
       public_token: metadata.public_token
     }
     this.plaidService.plaidSetAccessToken(postData).subscribe( res => {
-      console.log('Access ',res['access_token'])
+      // console.log('Access ',res['access_token'])
       localStorage.setItem('access_token',res['access_token']);
-      this.getAccount()
-      
+      this.getAuth()
     }, err => {
       this.errorAlert(`Error occured ${err.status}`);
     });
@@ -102,14 +101,12 @@ export class PlaidBankPage implements OnInit {
     console.log("We got metadata:", metadata);
   }
 
-  getAccount() {
-    console.log('Access token',localStorage.getItem('access_token'));
-    const ACCESS_TOKEN = localStorage.getItem('access_token').toString();
-    const postData = {
-      access_token: ACCESS_TOKEN
-    };
-    this.plaidService.plaidGetAccount(postData).subscribe( res => {
-      console.log('Account ',res);
+  getAuth() {
+    this.plaidService.plaidGetAuth().subscribe( res => {
+      console.log('Account ',res['accounts'][0].balances.available);
+      localStorage.setItem('savings',res['accounts'][0].balances.available)
+      localStorage.setItem('checking',res['accounts'][1].balances.available)
+      localStorage.setItem('total_balance',res['accounts'][0].balances.available+res['accounts'][1].balances.available);
       this.router.navigateByUrl('/dashboard');
     }, err => {
       this.errorAlert(`Error occured ${err.status}`);

@@ -13,6 +13,12 @@ export class PlaidAccountService {
       'Content-Type': 'application/json'
     }),
   };
+  private httpOptionsPlaid = {
+    headers: new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'access_token': localStorage.getItem('access_token')
+    }),
+  };
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +28,11 @@ export class PlaidAccountService {
   plaidSetAccessToken(data){
     return this.http.post(`${environment.serviceUrl}api/set_access_token`,data,this.httpOptions);
   }
-  plaidGetAccount(data){
-    return this.http.get(`${environment.serviceUrl}api/accounts`,data);
+  plaidGetAuth(){
+    return this.http.get(`${environment.serviceUrl}api/auth`,this.httpOptionsPlaid);
+  }
+
+  plaidGetTransaction(){
+    return this.http.get(`${environment.serviceUrl}api/transactions`,this.httpOptionsPlaid);
   }
 }

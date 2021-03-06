@@ -9,162 +9,141 @@
 <ion-content class="ion-margin transaction-content">
   <ion-card mode="ios" >
     <ion-card-content class="ion-padding card-content">
-      <ion-label class="schedule-label">Today</ion-label>
-      <ion-item  class="statement">
-        <ion-img slot="start" src="/assets/transactions/deposit.png"></ion-img>
-        <div class="statement-detail">
-          <div>
-            <ion-label class="statement-type">Deposite</ion-label>
-          </div>
-          <div>
-            <ion-label class="date-label">Jan 07,2020</ion-label>
-          </div>
+      <div *ngIf="todayTransaction">
+        <div *ngFor="let tdTr of todayTransaction">
+          <ion-label class="schedule-label">Today</ion-label>
+          <ion-item  class="statement" *ngIf="tdTr.amount > 0">
+            <ion-img slot="start" src="/assets/transactions/deposit.png"></ion-img>
+            <div class="statement-detail">
+              <div>
+                <ion-label class="statement-type">Deposite</ion-label>
+              </div>
+              <div>
+                <ion-label class="date-label">{{ tdTr.date | date:'MMM d,y' }}</ion-label>
+              </div>
+            </div>
+            <div slot="end" class="amount-and-status" style="display: flex; flex-direction: column;">
+              <div>
+                <ion-label class="amount">${{ tdTr.amount }}</ion-label>
+              </div>
+              <div>
+                <ion-label class="status">Pending</ion-label>
+              </div>
+            </div>
+          </ion-item>
+          <ion-item lines="none" class="statement" *ngIf="tdTr.amount < 0">
+            <ion-img slot="start" src="/assets/transactions/withdrawl.png"></ion-img>
+            <div class="statement-detail">
+              <div>
+                <ion-label class="statement-type">Withdrawl</ion-label>
+              </div>
+              <div>
+                <ion-label class="date-label">{{ tdTr.date | date:'MMM d,y' }}</ion-label>
+              </div>
+            </div>
+            <div slot="end" class="amount-and-status" style="display: flex; flex-direction: column;">
+              <div>
+                <ion-label class="amount">${{ tdTr.amount }}</ion-label>
+              </div>
+              <div>
+                <ion-label class="status" *ngIf="tdTr.pending">Pending</ion-label>
+                <ion-label class="status" style="color: green"  *ngIf="!tdTr.pending">Success</ion-label>
+              </div>
+            </div>
+          </ion-item>
         </div>
-        <div slot="end" class="amount-and-status" style="display: flex; flex-direction: column;">
-          <div>
-            <ion-label class="amount">$500.00</ion-label>
-          </div>
-          <div>
-            <ion-label class="status">Pending</ion-label>
-          </div>
+      </div>
+      <div *ngIf="todayTransaction">
+        <div *ngFor="let tdTr of yesterdayTransaction">
+          <ion-label class="schedule-label">Today</ion-label>
+          <ion-item  class="statement" *ngIf="tdTr.amount > 0">
+            <ion-img slot="start" src="/assets/transactions/deposit.png"></ion-img>
+            <div class="statement-detail">
+              <div>
+                <ion-label class="statement-type">Deposite</ion-label>
+              </div>
+              <div>
+                <ion-label class="date-label">{{ tdTr.date | date:'MMM d,y' }}</ion-label>
+              </div>
+            </div>
+            <div slot="end" class="amount-and-status" style="display: flex; flex-direction: column;">
+              <div>
+                <ion-label class="amount">${{ tdTr.amount }}</ion-label>
+              </div>
+              <div>
+                <ion-label class="status">Pending</ion-label>
+              </div>
+            </div>
+          </ion-item>
+          <ion-item lines="none" class="statement" *ngIf="tdTr.amount < 0">
+            <ion-img slot="start" src="/assets/transactions/withdrawl.png"></ion-img>
+            <div class="statement-detail">
+              <div>
+                <ion-label class="statement-type">Withdrawl</ion-label>
+              </div>
+              <div>
+                <ion-label class="date-label">{{ tdTr.date | date:'MMM d,y' }}</ion-label>
+              </div>
+            </div>
+            <div slot="end" class="amount-and-status" style="display: flex; flex-direction: column;">
+              <div>
+                <ion-label class="amount">${{ tdTr.amount }}</ion-label>
+              </div>
+              <div>
+                <ion-label class="status" *ngIf="tdTr.pending">Pending</ion-label>
+                <ion-label class="status" style="color: green"  *ngIf="!tdTr.pending">Success</ion-label>
+              </div>
+            </div>
+          </ion-item>
         </div>
-      </ion-item>
-      <ion-item lines="none" class="statement">
-        <ion-img slot="start" src="/assets/transactions/withdrawl.png"></ion-img>
-        <div class="statement-detail">
-          <div>
-            <ion-label class="statement-type">Withdrawl</ion-label>
+      </div>
+     
+   
+      <div *ngIf="transaction">
+        <div *ngFor="let t of transaction">
+        <ion-label class="schedule-label">{{ t.date | date:'MMM d' }}</ion-label>
+        <ion-item  class="statement" lines="none" *ngIf="t.amount > 0">
+          <ion-img slot="start" src="/assets/transactions/deposit.png"></ion-img>
+          <div class="statement-detail">
+            <div>
+              <ion-label class="statement-type">Deposite</ion-label>
+            </div>
+            <div>
+              <ion-label class="date-label">{{ t.date | date:'MMM d, y' }}</ion-label>
+            </div>
           </div>
-          <div>
-            <ion-label class="date-label">Jan 07,2020</ion-label>
+          <div slot="end" class="amount-and-status" style="display: flex; flex-direction: column;">
+            <div>
+              <ion-label class="amount">${{ t.amount }}</ion-label>
+            </div>
+            <div>
+              <ion-label class="status" *ngIf="t.pending">Pending</ion-label>
+              <ion-label class="status" style="color: green" *ngIf="!t.pending">Success</ion-label>
+            </div>
           </div>
+        </ion-item>
+        <ion-item lines="none" class="statement" *ngIf="t.amount < 0">
+          <ion-img slot="start" src="/assets/transactions/withdrawl.png"></ion-img>
+          <div class="statement-detail">
+            <div>
+              <ion-label class="statement-type">Withdrawl</ion-label>
+            </div>
+            <div>
+              <ion-label class="date-label">{{ t.date | date:'MMM d, y' }}</ion-label>
+            </div>
+          </div>
+          <div slot="end" class="amount-and-status" style="display: flex; flex-direction: column;">
+            <div>
+              <ion-label class="amount">${{ t.amount }}</ion-label>
+            </div>
+            <div>
+              <ion-label class="status" *ngIf="t.pending">Pending</ion-label>
+              <ion-label class="status" style="color: green"  *ngIf="!t.pending">Success</ion-label>
+            </div>
+          </div>
+        </ion-item>
         </div>
-        <div slot="end" class="amount-and-status" style="display: flex; flex-direction: column;">
-          <div>
-            <ion-label class="amount">$250.00</ion-label>
-          </div>
-          <div>
-            <ion-label class="status">Pending</ion-label>
-          </div>
-        </div>
-      </ion-item>
-      <ion-label class="schedule-label">Yestarday</ion-label>
-      <ion-item  class="statement">
-        <ion-img slot="start" src="/assets/transactions/deposit.png"></ion-img>
-        <div class="statement-detail">
-          <div>
-            <ion-label class="statement-type">Deposite</ion-label>
-          </div>
-          <div>
-            <ion-label class="date-label">Jan 07,2020</ion-label>
-          </div>
-        </div>
-        <div slot="end" class="amount-and-status" style="display: flex; flex-direction: column;">
-          <div>
-            <ion-label class="amount">$500.00</ion-label>
-          </div>
-          <div>
-            <ion-label class="status">Pending</ion-label>
-          </div>
-        </div>
-      </ion-item>
-      <ion-item lines="none" class="statement">
-        <ion-img slot="start" src="/assets/transactions/withdrawl.png"></ion-img>
-        <div class="statement-detail">
-          <div>
-            <ion-label class="statement-type">Withdrawl</ion-label>
-          </div>
-          <div>
-            <ion-label class="date-label">Jan 07,2020</ion-label>
-          </div>
-        </div>
-        <div slot="end" class="amount-and-status" style="display: flex; flex-direction: column;">
-          <div>
-            <ion-label class="amount">$250.00</ion-label>
-          </div>
-          <div>
-            <ion-label class="status">Pending</ion-label>
-          </div>
-        </div>
-      </ion-item>
-      <ion-label class="schedule-label">January 03</ion-label>
-      <ion-item  class="statement">
-        <ion-img slot="start" src="/assets/transactions/deposit.png"></ion-img>
-        <div class="statement-detail">
-          <div>
-            <ion-label class="statement-type">Deposite</ion-label>
-          </div>
-          <div>
-            <ion-label class="date-label">Jan 07,2020</ion-label>
-          </div>
-        </div>
-        <div slot="end" class="amount-and-status" style="display: flex; flex-direction: column;">
-          <div>
-            <ion-label class="amount">$500.00</ion-label>
-          </div>
-          <div>
-            <ion-label class="status">Pending</ion-label>
-          </div>
-        </div>
-      </ion-item>
-      <ion-item lines="none" class="statement">
-        <ion-img slot="start" src="/assets/transactions/withdrawl.png"></ion-img>
-        <div class="statement-detail">
-          <div>
-            <ion-label class="statement-type">Withdrawl</ion-label>
-          </div>
-          <div>
-            <ion-label class="date-label">Jan 07,2020</ion-label>
-          </div>
-        </div>
-        <div slot="end" class="amount-and-status" style="display: flex; flex-direction: column;">
-          <div>
-            <ion-label class="amount">$250.00</ion-label>
-          </div>
-          <div>
-            <ion-label class="status">Pending</ion-label>
-          </div>
-        </div>
-      </ion-item>
-      <ion-label class="schedule-label">January 02</ion-label>
-      <ion-item  class="statement">
-        <ion-img slot="start" src="/assets/transactions/deposit.png"></ion-img>
-        <div class="statement-detail">
-          <div>
-            <ion-label class="statement-type">Deposite</ion-label>
-          </div>
-          <div>
-            <ion-label class="date-label">Jan 07,2020</ion-label>
-          </div>
-        </div>
-        <div slot="end" class="amount-and-status" style="display: flex; flex-direction: column;">
-          <div>
-            <ion-label class="amount">$500.00</ion-label>
-          </div>
-          <div>
-            <ion-label class="status">Pending</ion-label>
-          </div>
-        </div>
-      </ion-item>
-      <ion-item lines="none" class="statement">
-        <ion-img slot="start" src="/assets/transactions/withdrawl.png"></ion-img>
-        <div class="statement-detail">
-          <div>
-            <ion-label class="statement-type">Withdrawl</ion-label>
-          </div>
-          <div>
-            <ion-label class="date-label">Jan 07,2020</ion-label>
-          </div>
-        </div>
-        <div slot="end" class="amount-and-status" style="display: flex; flex-direction: column;">
-          <div>
-            <ion-label class="amount">$250.00</ion-label>
-          </div>
-          <div>
-            <ion-label class="status">Pending</ion-label>
-          </div>
-        </div>
-      </ion-item>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>
