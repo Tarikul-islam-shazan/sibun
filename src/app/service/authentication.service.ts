@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../model/user.interface';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class AuthenticationService {
 
   userLoggedIn: boolean = false;
 
-  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService,private storage: Storage) { }
 
   signIn(data: User): Observable<User> {
     return this.http.post<User>(`${environment.serviceUrl}auth/register`,data,this.httpOptions);
@@ -33,8 +34,8 @@ export class AuthenticationService {
     return this.http.post(`${environment.serviceUrl}auth/logout`,data);
   }
 
-  isAuthenticated(): boolean{
-    const token = localStorage.getItem('token');
+  async isAuthenticated(): Promise<boolean>{
+    const token = await this.storage.get('token');
     return !this.jwtHelper.isTokenExpired(token);
   }
 }

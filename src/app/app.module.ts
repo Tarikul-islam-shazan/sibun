@@ -10,10 +10,10 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
-import { IonicStorageModule } from '@ionic/storage';
+import { IonicStorageModule,Storage } from '@ionic/storage-angular';
 
 export function tokenGetter() {
-  return localStorage.getItem('token');
+  return  localStorage.getItem('token');
 }
 
 @NgModule({
@@ -28,10 +28,7 @@ export function tokenGetter() {
       }
     }),
     IonicModule.forRoot(),
-    IonicStorageModule.forRoot({
-      name: '__sibunAppdb',
-      driverOrder: ['indexeddb', 'sqlite', 'websql']
-    }), 
+    IonicStorageModule.forRoot(), 
     AppRoutingModule
   ],
   providers: [

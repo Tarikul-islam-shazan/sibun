@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AuthenticationService } from '../service/authentication.service';
 import { PlaidAccountService } from '../service/plaid-account.service';
-// import { Storage } from '@ionic/storage';
+import { Storage } from '@ionic/storage-angular';
 import { PlaidLinkToken } from '../model/plaidLinkToken.interface';
 import { NgxPlaidLinkService, PlaidConfig } from 'plaid-link-angular';
 import { PlaidLinkHandler } from 'plaid-link-angular/lib/ngx-plaid-link-handler';
@@ -28,10 +28,10 @@ export class LoginPage implements OnInit {
     private authenticationService: AuthenticationService, 
     private plaidService: PlaidAccountService,
     private plaidLinkService: NgxPlaidLinkService,
-    // private storage: Storage,
+    private storage: Storage,
     private toastCtrl:ToastController) { }
 
-  ngOnInit() {
+ ngOnInit() {
     this.initializLoginForm();
   }
 
@@ -60,24 +60,22 @@ export class LoginPage implements OnInit {
     toast.present();
   }
 
-  login(){
+   login(){
     const postData = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password
     }
-    this.authenticationService.logIn(postData).subscribe((res)=>{
-      // console.log(res);
+    this.authenticationService.logIn(postData).subscribe( async (res)=>{
       try {
+        await this.storage.set('token',res.tokenData.token);
         localStorage.setItem('token',res.tokenData.token);
-        localStorage.setItem('person-name',res.firstName+' '+res.lastName);
-        localStorage.setItem('user-name','$'+res.firstName);
+        await this.storage.set('person-name',res.firstName+' '+res.lastName);
+        await this.storage.set('user-name','$'+res.firstName);
         this.callPlaidLinkToken();
       } catch (e) {
         this.errorAlert('Some thing went wrong');
       }
-      
     },(err)=> {
-      // console.log(err)
       if(err.status == 400){
         this.errorAlert('Email already exist');
       } else {
@@ -89,11 +87,9 @@ export class LoginPage implements OnInit {
   callPlaidLinkToken() {
     this.plaidService.plaidCreateLinkToken().subscribe( (res:PlaidLinkToken) => {
       try {
-        // console.log('Link-Token:',res.link_token)
         localStorage.setItem('link_token', res.link_token);
         this.successAlert('Log in Sucessful');
         this.plaidLinkInitalization();
-        // this.router.navigateByUrl('/plaid-bank');
       } catch (e) {
         this.errorAlert('Login Page: Storage not set');
       }
@@ -144,14 +140,11 @@ export class LoginPage implements OnInit {
   }
 
   onSuccess(token, metadata) {
-    // console.log("We got a token:", token);
-    // console.log("We got metadata:", metadata.public_token);
     localStorage.setItem('public_token',metadata.public_token);
     const postData = {
       public_token: metadata.public_token
     }
     this.plaidService.plaidSetAccessToken(postData).subscribe( res => {
-      // console.log('Access ',res['access_token'])
       localStorage.setItem('access_token',res['access_token']);
       this.getAuth()
     }, err => {

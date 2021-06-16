@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
 import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
@@ -15,9 +16,12 @@ export class ProfilePage implements OnInit {
   constructor(
     private authService: AuthenticationService,
     private router:Router,
-    private toastCtrl:ToastController) {
-    this.personName = localStorage.getItem('person-name');
-    this.userName = localStorage.getItem('user-name');
+    private storage: Storage,
+    private toastCtrl:ToastController) {}
+
+   async getProfileStorage() {
+    this.personName = await this.storage.get('person-name');
+    this.userName = await this.storage.get('user-name');
    }
 
    async errorAlert(error){
@@ -40,18 +44,20 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
+    this.getProfileStorage();
   }
 
   logOut(){
-    this.authService.logOut('').subscribe((res: any)=>{
-      console.log(res.message)
+    this.authService.logOut('').subscribe(async (res: any)=>{
       if(res.message){
+        await this.storage.remove('token');
         localStorage.clear();
+        await this.storage.remove('person-name');
+        await this.storage.remove('user-name');
         this.router.navigateByUrl('/login');
         this.successAlert(res.message);
       }
     },err => {
-      console.log("error",err);
       this.errorAlert(err.status);
     })
   }

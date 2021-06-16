@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalController, Platform } from '@ionic/angular';
 import { Plugins } from '@capacitor/core';
 import { SplashPage } from './splash/splash/splash.page';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent {
-  constructor(private platform: Platform,private modalCtrl: ModalController) {
+export class AppComponent implements OnInit {
+  constructor(private platform: Platform,private modalCtrl: ModalController, private storage: Storage) {
     this.initializeApp();
   }
 
@@ -32,5 +33,9 @@ export class AppComponent {
       component: SplashPage
     });
     await splashModal.present();
+  }
+
+  async ngOnInit() {
+    await this.storage.create();
   }
 }
