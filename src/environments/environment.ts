@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  serviceUrl: 'http://18.117.79.23:3000/',
-  localServiceUrl: 'http://localhost:5000/',
+  serviceUrl: 'http://3.141.122.29:3000/',
+  localServiceUrl: 'http://localhost:3000/',
   plaid : {
     sandbox: '34565371649e50ff68fee9b85e04a4'
   }
